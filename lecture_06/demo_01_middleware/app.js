@@ -20,6 +20,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => { 
+    console.log("This is the first additional piece of middleware that I made")
+    next(); 
+})
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
